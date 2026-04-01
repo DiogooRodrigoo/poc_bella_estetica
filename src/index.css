@@ -6,58 +6,53 @@
 
 @layer base {
   :root {
-    --background: 30 15% 6%;
-    --foreground: 35 30% 90%;
+    --background: 0 0% 100%; /* Pure White */
+    --foreground: 0 0% 10%;  /* Dark Charcoal for high readability */
 
-    --card: 30 12% 10%;
-    --card-foreground: 35 30% 90%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 10%;
 
-    --popover: 30 12% 10%;
-    --popover-foreground: 35 30% 90%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 20 30% 50%;
+    --primary: 35 40% 40%; /* Subdued Gold / Bronze */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 338 93% 60%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 35 20% 95%; /* Very light nude/cream */
+    --secondary-foreground: 0 0% 15%;
 
-    --muted: 30 10% 15%;
-    --muted-foreground: 20 15% 55%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 338 93% 60%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 35 20% 95%;
+    --accent-foreground: 0 0% 10%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 30 15% 18%;
-    --input: 30 15% 18%;
-    --ring: 35 55% 65%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 35 40% 40%;
 
-    --radius: 0.25rem;
+    --radius: 0.5rem; /* slightly larger radius for softer look */
 
-    --wine: 338 93% 35%;
+    --wine: 338 40% 30%; /* Kept for subtle dark accents if needed */
     --wine-foreground: 0 0% 100%;
-    --nude: 20 30% 75%;
-    --nude-foreground: 30 15% 6%;
-    --gold: 20 30% 50%;
+    
+    --nude: 35 30% 85%;
+    --nude-foreground: 0 0% 10%;
+    
+    --gold: 35 45% 55%;
     --gold-foreground: 0 0% 100%;
-    --cream: 20 20% 90%;
-    --cream-foreground: 30 15% 6%;
-    --pink: 338 93% 60%;
-    --pink-foreground: 0 0% 100%;
+    
+    --cream: 35 30% 96%;
+    --cream-foreground: 0 0% 10%;
+    
+    --pink: 338 50% 85%;
+    --pink-foreground: 0 0% 10%;
 
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Outfit', sans-serif;
-
-    --sidebar-background: 30 12% 10%;
-    --sidebar-foreground: 35 30% 90%;
-    --sidebar-primary: 35 55% 65%;
-    --sidebar-primary-foreground: 30 15% 6%;
-    --sidebar-accent: 30 10% 15%;
-    --sidebar-accent-foreground: 35 30% 90%;
-    --sidebar-border: 30 15% 18%;
-    --sidebar-ring: 35 55% 65%;
   }
 }
 
@@ -67,33 +62,29 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased selection:bg-gold/20 selection:text-foreground;
     font-family: var(--font-body);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+    @apply tracking-tight text-foreground;
   }
 }
 
 @layer components {
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--pink)), hsl(var(--nude)));
-  }
-
-  .border-gradient-gold {
-    border-image: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--primary))) 1;
+    background-image: linear-gradient(135deg, hsl(var(--gold)), color-mix(in srgb, hsl(var(--gold)) 70%, black));
   }
 
   .bg-glass {
-    @apply backdrop-blur-xl;
-    background: hsl(var(--background) / 0.7);
+    @apply backdrop-blur-3xl bg-white/70 border border-white/20 shadow-sm;
   }
 
   .section-divider {
-    @apply w-16 h-px mx-auto;
-    background: linear-gradient(90deg, transparent, hsl(var(--pink)), transparent);
+    @apply w-16 h-[1px] mx-auto;
+    background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
   }
 }
 
@@ -104,12 +95,15 @@ html {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: hsl(var(--background));
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--gold) / 0.3);
-  border-radius: 2px;
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
 }
