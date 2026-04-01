@@ -15,7 +15,7 @@ const Navbar = () => {
     { label: "Início", href: "#hero" },
     { label: "Sobre", href: "#about" },
     { label: "Procedimentos", href: "#services" },
-    { label: "Resultados", href: "#results" },
+    { label: "Depoimentos", href: "#results" },
     { label: "Contato", href: "#contact" },
   ];
 
@@ -31,7 +31,7 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
           <a href="#hero" className="font-display text-2xl font-light tracking-widest text-gradient-gold uppercase">
-            Sculpt
+            Bella Estética
           </a>
 
           <div className="hidden md:flex items-center gap-10">
@@ -48,7 +48,7 @@ const Navbar = () => {
 
           <a
             href="#contact"
-            className="hidden md:block font-body text-xs tracking-[0.15em] uppercase px-6 py-3 border border-gold/30 text-primary hover:bg-gold/10 transition-all duration-300"
+            className="hidden md:block font-body text-xs tracking-[0.15em] uppercase px-6 py-3 border border-pink/40 text-pink hover:bg-pink/10 transition-all duration-300"
           >
             Agendar
           </a>
