@@ -36,14 +36,16 @@
 
     --radius: 0.25rem;
 
-    --wine: 350 45% 25%;
-    --wine-foreground: 35 30% 90%;
-    --nude: 30 25% 75%;
+    --wine: 338 93% 35%;
+    --wine-foreground: 0 0% 100%;
+    --nude: 20 30% 75%;
     --nude-foreground: 30 15% 6%;
-    --gold: 40 75% 55%;
-    --gold-foreground: 30 15% 6%;
-    --cream: 35 40% 92%;
+    --gold: 20 30% 50%;
+    --gold-foreground: 0 0% 100%;
+    --cream: 20 20% 90%;
     --cream-foreground: 30 15% 6%;
+    --pink: 338 93% 60%;
+    --pink-foreground: 0 0% 100%;
 
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Outfit', sans-serif;
