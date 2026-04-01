@@ -93,7 +93,7 @@
 
   .section-divider {
     @apply w-16 h-px mx-auto;
-    background: linear-gradient(90deg, transparent, hsl(var(--gold)), transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--pink)), transparent);
   }
 }
 
