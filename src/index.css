@@ -6,104 +6,130 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* Pure White */
-    --foreground: 0 0% 10%;  /* Dark Charcoal for high readability */
+    /* Main Luxury Palette using OKLCH */
+    --background: oklch(0.98 0.01 40); /* Warm Cream White */
+    --foreground: oklch(0.20 0.02 40); /* Dark Charcoal */
 
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 10%;
+    --card: oklch(0.99 0.01 40);
+    --card-foreground: oklch(0.20 0.02 40);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --primary: oklch(0.45 0.05 40); /* Deep Bronze / Sophisticated Gold */
+    --primary-foreground: oklch(0.98 0.01 40);
 
-    --primary: 35 40% 40%; /* Subdued Gold / Bronze */
-    --primary-foreground: 0 0% 100%;
+    --secondary: oklch(0.94 0.03 40); /* Soft Nude / Sand */
+    --secondary-foreground: oklch(0.20 0.02 40);
 
-    --secondary: 35 20% 95%; /* Very light nude/cream */
-    --secondary-foreground: 0 0% 15%;
+    --muted: oklch(0.95 0.01 40);
+    --muted-foreground: oklch(0.45 0.02 40);
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --accent: oklch(0.90 0.05 340); /* Soft Rose Pink */
+    --accent-foreground: oklch(0.25 0.05 340);
 
-    --accent: 35 20% 95%;
-    --accent-foreground: 0 0% 10%;
+    --destructive: oklch(0.60 0.15 25);
+    --destructive-foreground: oklch(0.98 0.01 40);
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --border: oklch(0.90 0.02 40);
+    --input: oklch(0.90 0.02 40);
+    --ring: oklch(0.45 0.05 40);
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 35 40% 40%;
+    --radius: 1.5rem;
 
-    --radius: 0.5rem; /* slightly larger radius for softer look */
-
-    --wine: 338 40% 30%; /* Kept for subtle dark accents if needed */
-    --wine-foreground: 0 0% 100%;
-    
-    --nude: 35 30% 85%;
-    --nude-foreground: 0 0% 10%;
-    
-    --gold: 35 45% 55%;
-    --gold-foreground: 0 0% 100%;
-    
-    --cream: 35 30% 96%;
-    --cream-foreground: 0 0% 10%;
-    
-    --pink: 338 50% 85%;
-    --pink-foreground: 0 0% 10%;
+    /* Custom Tokens */
+    --gold: oklch(0.70 0.10 80);
+    --cream: oklch(0.98 0.02 60);
+    --pink: oklch(0.90 0.04 340);
 
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Outfit', sans-serif;
+  }
+
+  .dark {
+    --background: oklch(0.15 0.02 40);
+    --foreground: oklch(0.98 0.01 40);
+    --border: oklch(0.25 0.02 40);
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-ring/30 select-none selection:bg-primary/20 selection:text-foreground;
   }
 
   body {
-    @apply bg-background text-foreground antialiased selection:bg-gold/20 selection:text-foreground;
+    @apply bg-background text-foreground antialiased scroll-smooth;
     font-family: var(--font-body);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    @apply tracking-tight text-foreground;
+    @apply font-light tracking-tight;
   }
 }
 
 @layer components {
+  /* High-end Glassmorphism */
+  .glass {
+    @apply backdrop-blur-xl bg-white/70 border border-white/40 shadow-2xl shadow-black/5;
+  }
+  
+  .glass-alt {
+    @apply backdrop-blur-2xl bg-white/40 border border-white/20 shadow-xl;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md bg-white/30 border border-white/50 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+  }
+
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--gold)), color-mix(in srgb, hsl(var(--gold)) 70%, black));
+    background: linear-gradient(to bottom right, var(--primary), var(--gold), oklch(0.45 0.05 40 / 0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    @apply font-medium;
   }
 
-  .bg-glass {
-    @apply backdrop-blur-3xl bg-white/70 border border-white/20 shadow-sm;
+  .btn-premium {
+    background-color: var(--primary);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    transition: all 500ms;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    @apply shadow-primary/20;
   }
 
-  .section-divider {
-    @apply w-16 h-[1px] mx-auto;
-    background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
+  .btn-premium:hover {
+    background-color: #0a0a0a;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .btn-premium:active {
+    transform: scale(0.95);
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-24;
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: hsl(var(--background));
+  @apply bg-background;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--border));
-  border-radius: 3px;
+  @apply bg-border rounded-full border-4 border-solid border-background hover:bg-primary transition-colors;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
+
+/* Animations for Section Entry */
+.reveal {
+  @apply opacity-0 translate-y-8;
 }
